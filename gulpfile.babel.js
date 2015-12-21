@@ -5,7 +5,6 @@ import mergeStream from 'merge-stream';
 import jade from 'gulp-jade';
 import stylus from 'gulp-stylus';
 import autoprefixer from 'gulp-autoprefixer';
-import minifycss from 'gulp-minify-css';
 import spritesmith from 'gulp.spritesmith';
 import webserver from 'gulp-webserver';
 
@@ -32,7 +31,7 @@ gulp.task('build:css', ['build:sprite'], () => {
   return gulp.src(`${SRC_DIR}/css/main.styl`)
     .pipe(stylus({
       include : [`${TMP_DIR}/css`],
-      compress: true
+      compress: false
     }))
     .on('error', onError)
     .pipe(autoprefixer({
@@ -40,7 +39,6 @@ gulp.task('build:css', ['build:sprite'], () => {
       cascade : false
     }))
     .on('error', onError)
-    .pipe(minifycss())
     .pipe(gulp.dest(`${BUILD_DIR}/css`));
 });
 
