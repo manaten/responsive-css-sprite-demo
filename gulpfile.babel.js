@@ -50,6 +50,8 @@ gulp.task('build:sprite', () => {
       cssName  : 'sprite.styl',
       imgPath  : '/assets/sprite.png',
       cssFormat: 'stylus',
+      algorithm: 'diagonal',
+      padding  : 2,
       cssVarMap: sprite => {
         sprite.name = 'sprite-' + sprite.name;
       }
